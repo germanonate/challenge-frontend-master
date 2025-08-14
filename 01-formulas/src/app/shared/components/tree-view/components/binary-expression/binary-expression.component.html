@@ -1,0 +1,11 @@
+<div class="expr-block" *ngIf="binaryExpr">
+  <!-- Left Expr -->
+  <app-expression [expression]="binaryExpr.left" (delete)="onDeleteExpression('left')" (expressionChange)="onExpressionChange($event, 'left')"></app-expression>
+  <!-- Binary Operation -->
+  <nz-select [ngModel]="binaryExpr.type" (ngModelChange)="onTypeChange($event)">
+    <nz-option *ngFor="let binaryOpt of binaryOperations" [nzValue]="binaryOpt.value" [nzLabel]="binaryOpt.label">
+    </nz-option>
+  </nz-select>
+  <!-- Right Operation -->
+  <app-expression [expression]="binaryExpr.right" (delete)="onDeleteExpression('right')" (expressionChange)="onExpressionChange($event, 'right')"></app-expression>
+</div>

@@ -1,0 +1,6 @@
+<div class="expr-block" *ngIf="unaryExpr">
+  <span>-</span>
+  <!-- Expression -->
+  <app-expression [expression]="unaryExpr.expression" [allowDelete]="false"
+    (expressionChange)="onExpressionChange($event)"></app-expression>
+</div>

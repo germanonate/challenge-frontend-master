@@ -1,0 +1,13 @@
+<div class="function expr-block" *ngIf="function">
+  <!-- Function select -->
+  <nz-select [ngModel]="function.name" (ngModelChange)="onNameChange($event)">
+    <nz-option *ngFor="let func of funcTypes" [nzValue]="func" [nzLabel]="func">
+    </nz-option>
+  </nz-select>
+  <div class="function__arguments"></div>
+  <!-- Expressions -->
+  <app-symbol [type]="'paren'" [state]="'open'"></app-symbol>
+  <app-expression *ngFor="let argument of function.arguments; let i = index" [expression]="argument"
+    [allowDelete]="false" (expressionChange)="onExpressionChange($event, i)"></app-expression>
+  <app-symbol [type]="'paren'" [state]="'close'"></app-symbol>
+</div>

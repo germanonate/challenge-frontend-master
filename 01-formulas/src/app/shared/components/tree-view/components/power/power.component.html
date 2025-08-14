@@ -1,0 +1,10 @@
+<div class="expr-block" *ngIf="power">
+  <!-- Expr -->
+  <app-expression [expression]="power.expression" (expressionChange)="onExpressionChange($event, 'expression')"
+    (delete)="onDeleteExpression('expression')"></app-expression>
+  <!-- Operation -->
+  <span>^</span>
+  <!-- Power -->
+  <app-expression [expression]="power.power" (expressionChange)="onExpressionChange($event, 'power')"
+    (delete)="onDeleteExpression('power')"></app-expression>
+</div>

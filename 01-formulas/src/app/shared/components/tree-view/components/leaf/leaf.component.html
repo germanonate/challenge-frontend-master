@@ -1,0 +1,8 @@
+<div *ngIf="leaf">
+  <!-- Number -->
+  <nz-input-number *ngIf="leaf.type === 'NUMBER'" [(ngModel)]="leaf.value" (nzBlur)="onValueChange()"></nz-input-number>
+  <!-- Variable -->
+  <nz-tag *ngIf="leaf.type === 'VARIABLE'" [nzColor]="'cyan'"> {{ leaf.name }}</nz-tag>
+  <!-- PI -->
+  <nz-tag *ngIf="leaf.type === 'PI'" [nzColor]="'orange'">{{ leaf.type }}</nz-tag>
+</div>

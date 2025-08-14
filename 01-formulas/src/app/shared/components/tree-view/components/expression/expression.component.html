@@ -1,0 +1,49 @@
+<div class="expression expression--border" *ngIf="expression">
+
+  <!-- Actions -->
+  <div class="expression__actions">
+    <a class="dropdown" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" [nzPlacement]="'topRight'">
+      <i nz-icon nzType="ellipsis"></i>
+    </a>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu>
+        <li nz-menu-item [nzDisabled]="root || !allowDelete" (click)="onDeleteExpression()">Delete expression</li>
+        <li nz-menu-item [nzDisabled]="!(type === 'leaf')" (click)="onAddExpression()">Add binary expression</li>
+      </ul>
+    </nz-dropdown-menu>
+  </div>
+
+  <div class="expr-block">
+    <!-- Leaf -->
+    <app-leaf *ngIf="type === 'leaf'" [leaf]="(expression | as: Leaf)" (leafChange)="onExpressionChange($event)">
+    </app-leaf>
+
+    <!-- Binary Expr -->
+    <app-binary-expression *ngIf="type === 'binaryExpr'" [binaryExpr]="(expression | as: BinaryExpression)"
+      (binaryExprChange)="onExpressionChange($event)">
+    </app-binary-expression>
+
+    <!-- Unary Expr -->
+    <app-unary-expression *ngIf="type === 'unaryExpr'" [unaryExpr]="(expression | as: UnaryExpression)"
+      (unaryExprChange)="onExpressionChange($event)">
+    </app-unary-expression>
+
+    <!-- Paren -->
+    <ng-container *ngIf="type === 'symbol'">
+      <app-symbol [type]="'paren'" [state]="'open'"></app-symbol>
+      <app-expression [expression]="(expression | as: Symbol)?.expression" [allowDelete]="false"
+        (expressionChange)="onParenExpressionChange($event)">
+      </app-expression>
+      <app-symbol [type]="'paren'" [state]="'close'"></app-symbol>
+    </ng-container>
+
+    <!-- Power -->
+    <app-power *ngIf="type === 'power'" [power]="(expression | as: Power)" (powerChange)="onExpressionChange($event)">
+    </app-power>
+
+    <!-- Function -->
+    <app-function *ngIf="type === 'function'" [function]="(expression | as: Func)"
+      (functionChange)="onExpressionChange($event)"></app-function>
+  </div>
+
+</div>

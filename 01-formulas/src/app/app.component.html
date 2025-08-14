@@ -1,0 +1,26 @@
+<div class="content">
+  <h1>
+    Welcome to the formulizer!
+  </h1>
+  <!-- Formula input -->
+  <nz-input-group nzSearch nzSize="large" [nzSuffix]="inputClearTpl" [nzAddOnAfter]="suffixButton">
+    <input id="formulaInput" type="text" nz-input placeholder="Input formula" [(ngModel)]="formula" />
+  </nz-input-group>
+  <!-- Suffix Action button -->
+  <ng-template #suffixButton>
+    <button nz-button nzType="primary" nzSize="large" id="magicButton" (click)="processFormula()">Do magic!</button>
+  </ng-template>
+  <!-- Clear formula button -->
+  <ng-template #inputClearTpl>
+    <i nz-icon class="ant-input-clear-icon" nzTheme="fill" nzType="close-circle" *ngIf="formula"
+      (click)="formula = ''"></i>
+  </ng-template>
+
+  <!-- Results -->
+  <div class="results" *ngIf="expression">
+    <h2>Visualizer</h2>
+    <pre class="language-ts" style="max-height: 300px; overflow-y: auto">{{syntaxTreeJson}}</pre>
+    <h2>Interactive View</h2>
+    <app-tree-view *ngIf="expression" [expression]="expression"></app-tree-view>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="tree-view">
+  <!-- Formula -->
+  <pre id="treeToFormula" class="language-ts">{{ formula }}</pre>
+  <div class="tree-view__expression">
+    <!-- Root expression -->
+    <app-expression [expression]="expression" [root]="true" (expressionChange)="onExpressionChange($event)"></app-expression>
+  </div>
+</div>

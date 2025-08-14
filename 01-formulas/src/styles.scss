@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  padding: 1em;
+}
+
+.content {
+  margin: 0 15%;
+
+  /* Extra & Small devices (phones, portrait tablets) */
+  @media only screen and (max-width: 767px) {
+    margin: 0;
+  }
+
+  /* Medium devices (landscape tablets, small desktops) & Large devices (large desktops) */
+  @media (min-width: 768px) and (max-width: 1199px) {
+    margin: 0 5%;
+  }
+}
+
+.expr-block {
+  display: flex;
+  align-items: center;
+}
+
+.language-ts {
+  background: #f5f5f5;
+  margin: 16px 0;
+  padding: 12px 20px;
+}
+
+.results {
+  margin-top: 1em;
+}
